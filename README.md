@@ -45,17 +45,120 @@
 
 ---
 
-## 五、交叉编译与嵌入式端（GEC6818）
+## 五、关于在linux 系统下，搭建ARM qt开发环境
 
-**交叉编译（示例）**
-- 假设交叉工具链为 `arm-linux-gnueabi-g++` / `arm-linux-gnueabi-gcc`，并已配置 qmake 或 CMake 的交叉 Kit。
-- 在交叉环境中编译 Qt 程序或仅编译嵌入式端的 C 程序（如 TCP 客户端）。
 
-**部署**
-```bash
-# 交叉编译后，将二进制拷贝到开发板
-scp Project root@<GEC6818_IP>:/home/root/
+对于ARM平台的qt环境，开发板上的qt环境只提供程序运行环境支持，不支持编译
 
-# 在开发板上运行（需可执行权限）
-chmod +x /home/root/Project
-/home/root/Project
+<img width="370" height="146" alt="Image" src="https://github.com/user-attachments/assets/6f70b5f4-c30d-4814-97fa-fe8a90fef7b8" />
+
+
+第一步：将Qt-Embedded-5.7.0.tar.xz拷贝到linux下/usr/local
+
+<img width="554" height="92" alt="Image" src="https://github.com/user-attachments/assets/dda4fc9e-fece-4fc1-8b4c-360c088a8ce5" />
+
+
+第二步：进入/usr/local目录执行解压命令
+
+<img width="554" height="34" alt="Image" src="https://github.com/user-attachments/assets/9acc24c6-f9a1-4272-b249-e56c132b3b15" />
+
+
+第三步：进入qt所在目录 ，查看qmake文件
+
+<img width="554" height="79" alt="Image" src="https://github.com/user-attachments/assets/d848ce6f-0131-466d-8ef6-9998e1b3a067" />
+
+
+第四步：在qt工程目录下，以绝对路径的方式来执行qmake命令，不要在任意的路径下来执行qmake，因为，linux操作系统下，本身也支持qt
+
+<img width="554" height="139" alt="Image" src="https://github.com/user-attachments/assets/1f9a0de5-1b80-4f29-8596-f82b73155196" />
+
+
+第五步：在工程下，执行make命令来编译工程
+
+<img width="554" height="78" alt="Image" src="https://github.com/user-attachments/assets/a154a88c-12b4-4c96-8a84-cd9001ffe193" />
+
+
+(QT修改界面与结果不同步的问题：两种编译相互影响)
+
+第一步：
+
+make clean
+
+第二步：
+
+重新构建(不是重新编译)
+
+第三步：
+
+QT编译 
+
+编译工程时报错：
+
+<img width="554" height="151" alt="Image" src="https://github.com/user-attachments/assets/5021052a-ff31-42fa-b3d6-97d648104856" />
+
+
+解决办法：
+
+sudo ln -s /usr/lib/x86_64-linux-gnu/libmpfr.so.6 /usr/lib/x86_64-linux-gnu/libmpfr.so.4
+
+第六步：在工程目录下，利用file命令来查看可执行文件的格式
+
+<img width="554" height="46" alt="Image" src="https://github.com/user-attachments/assets/80c659df-be40-472c-9812-568828411607" />
+
+
+第七步：将可执行程序利用串口工具上传到开发板
+
+第八步：修改权限并运行程序
+
+chmod 777 day2_homework2
+
+./day2_homework2
+
+在移植qt程序时，可能出现的问题：
+
+<img width="554" height="69" alt="Image" src="https://github.com/user-attachments/assets/90fe8bd1-2482-4ad7-b3ba-99bf49c39e03" />
+
+
+完成之后在qt的工程目录下/usr/local/Qt-Embedded-5.7.0/bin/qmake
+
+会生成一个makefile，make即可(如果在qt软件编译过，需要重构之后再make clean，再make)
+
+
+## 六、LED驱动安装
+led灯显示的步骤如下：
+
+1、将led_drv.ko驱动文件下载到开发板中
+
+2、下载完成之后，在开发板中使用命令 安装驱动文件
+
+insmod  led_drv.ko  --后面把这个安装的命令写入到/etc/profile脚本文件中
+
+3、安装完成之后，使用lsmod去查看是否安装成功 或者 去根目录下/dev 里面去查看
+
+[root@GEC6818 ~]#insmod  led_drv.ko
+
+[root@GEC6818 ~]#lsmod
+
+led_drv 2871 0 - Live 0xbf684000 (O)
+
+cc2530_drv 5650 0 - Live 0xbf227000 (O)
+
+rtl8723bu_wifi 1810467 0 - Live 0xbf021000 (O)
+
+gec6818_humidity 3339 0 - Live 0xbf01d000 (O)
+
+stepmotor 4252 0 - Live 0xbf018000 (O)
+
+relay 1244 0 - Live 0xbf014000 (O)
+
+led 1593 0 - Live 0xbf010000 (O)
+
+gec6818_beep 1551 0 - Live 0xbf00c000 (O)
+
+gas_drv 2257 0 - Live 0xbf008000 (O)
+
+dc_motor 1802 0 - Live 0xbf004000 (O)
+
+buttons_drv 3028 0 - Live 0xbf000000 (O)
+
+## 七、科大讯飞使用方法
