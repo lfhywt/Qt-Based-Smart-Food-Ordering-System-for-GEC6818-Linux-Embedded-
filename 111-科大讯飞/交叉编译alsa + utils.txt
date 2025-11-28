@@ -1,0 +1,36 @@
+交叉编译alsa：alsa-lib-1.0.22.tar.bz2
+============
+准备工作：
+	将alsa-lib-1.0.22.tar.bz2拷贝到家目录中
+		cp alsa-lib-1.0.22.tar.bz2 ~
+	在/usr/local下创建alsa目录(安装好之后，会将文件放在该目录下)
+		mkdir /usr/local/alsa
+源码安装三部曲：
+解压：tar -jxvf alsa-lib-1.0.22.tar.bz2,得到 alsa-lib-1.0.22，进入该目录
+	j：解压tar.bz2 格式的压缩包，如果是tar.gz--->z
+	x：解压，（c,创建压缩）
+	v：显示解压过程
+	f：后接文件名
+1、配置：
+./configure --prefix=/usr/local/alsa --host=arm-linux --disable-python
+2、编译：
+make
+3、安装（切换到root用户：sudo -s）
+make install
+
+
+交叉编译alsa-utils：alsa-utils-1.0.22.tar.bz2
+==================
+准备工作：
+	将alsa-lib-1.0.22.tar.bz2拷贝到家目录中
+		cp alsa-lib-1.0.22.tar.bz2 ~
+
+./configure --prefix=/usr/local/alsa \
+            --host=arm-linux \
+            --with-alsa-prefix=/usr/local/alsa/lib/ \
+            --with-alsa-inc-prefix=/usr/local/alsa/include/ \
+            --disable-alsamixer \
+            --disable-xmlto
+make
+3、安装（切换到root用户：sudo -s）
+make install

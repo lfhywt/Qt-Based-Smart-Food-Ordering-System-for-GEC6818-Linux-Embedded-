@@ -1,0 +1,24 @@
+﻿#BNF+IAT 1.0 UTF-8;
+!grammar call;
+!slot <want>;
+!slot <dialpre>;
+!slot <dialsuf>;
+!slot <contact>;
+
+!start <callstart>;
+<callstart>:<dial>;
+<dial>:<dialpre><contact>;
+
+<dialpre>: 打开!id(10001)
+         | 播放!id(10001)
+         | 打印!id(20001)
+	 | 喜欢!id(10001)
+
+         ;
+
+<contact>: 相册
+         | 音乐
+         | 视频
+         | 小票!id(21001)
+	| 东北雨姐!id(21002)
+         ;

@@ -1,0 +1,53 @@
+要成功录音和播放声音，需要先做好下面几件事情：
+
+1，设置aplay/arecode的所在路径
+==============================
+1）将Ubuntu中安装好的alsa库打包：
+	tar -czvf alsa.tar.gz alsa/
+2)将alsa.tar.gz上传到开发板,解压，将arecord和aplay拷贝到开发板/bin中
+	tar  xzvf  alsa.tar.gz
+	cp /alsa/bin/arecord /alsa/bin/aplay /bin
+
+2，设置alsa的配置文件路径
+=========================
+将alsa/share/alsa复制到开发板的/usr/local/alsa/share(若没有，则创建)中，方法如下：
+cp  /alsa/share/alsa  /usr/local/alsa/share  -r
+将/alsa/lib/libasound.so.2 拷贝到开发板中/lib中
+
+3，设置音频文件相关设备节点
+===========================
+在开发板中依次运行如下命令：
+mkdir /dev/snd
+cd /dev/snd
+
+mknod dsp c 14 3
+mknod audio c 14 4
+mknod mixer c 14 0
+mknod controlC0 c 116 0
+mknod seq c 116 1
+mknod pcmC0D0c c 116 24
+mknod pcmC0D0p c 116 16
+mknod pcmC0D1c c 116 25
+mknod pcmC0D1p c 116 17
+mknod timer c 116 33
+
+如果觉得以上命令很容易敲错
+可以直接将本目录下的mknod.sh丢到开发板，并运行：
+./mknod.sh
+
+
+执行如下命令录音
+----------------
+1. arecord -d3 -c1 -r16000 -twav -fS16_LE 1.wav
+
+说明：
+-d：录音时长（duration）
+-c：音轨（channels）
+-r：采样频率（rate）
+-t：封装格式（type）
+-f：量化位数（format）
+
+执行如下命令播放
+----------------
+2. aplay 1.wav
+
