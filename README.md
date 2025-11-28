@@ -1,6 +1,6 @@
 # 基于 Qt 的 GEC6818 Linux 嵌入式智能点餐系统
 
-本项目基于 **GEC6818 开发板（ARM）**、**Linux** 与 **Qt**，实现了一个嵌入式的智能点餐终端与上位机（Qt HMI）的完整原型。系统包含触摸屏点餐界面、订单管理、上位机管理、LED 控制以及内置的 Pinyin 输入法（EasyInput）。  
+本项目基于 **GEC6818 开发板（ARM）**、**Linux** 与 **Qt**，实现了一个嵌入式的智能点餐终端与上位机（Qt HMI）的完整原型。系统包含触摸屏点餐界面、订单管理、上位机管理、LED 控制以及内置的 Pinyin 输入法（EasyInput）,以及科大讯飞的语音识别。  
 
 此 README 为中文完整版，含完整目录结构、构建与运行说明、通信协议示例和常见问题解答，便于直接放到 GitHub 仓库首页。
 
@@ -15,100 +15,6 @@
 
 ---
 
-## 二、项目目录（与你提供的 tree 完全对应）
-├── 11.png
-├── 1.jpg
-├── 2.jpg
-├── 3-removebg-preview.png
-├── background.jpg
-├── cartmanager.cpp
-├── cartmanager.h
-├── cartmanager.ui
-├── cartpage.cpp
-├── cartpage.h
-├── cartpage.ui
-├── easyInput
-│ ├── dict_pinyin.dat
-│ ├── dict_pinyin_user.dat
-│ ├── easyInput.cpp
-│ ├── easyinput.h
-│ ├── easyInput.pri
-│ ├── easyInput.qrc
-│ ├── easyInput.ui
-│ ├── googlepinyin
-│ │ ├── atomdictbase.h
-│ │ ├── dictbuilder.cpp
-│ │ ├── dictbuilder.h
-│ │ ├── dictdef.h
-│ │ ├── dictlist.cpp
-│ │ ├── dictlist.h
-│ │ ├── dicttrie.cpp
-│ │ ├── dicttrie.h
-│ │ ├── lpicache.cpp
-│ │ ├── lpicache.h
-│ │ ├── matrixsearch.cpp
-│ │ ├── matrixsearch.h
-│ │ ├── mystdlib.cpp
-│ │ ├── mystdlib.h
-│ │ ├── ngram.cpp
-│ │ ├── ngram.h
-│ │ ├── pinyinime.cpp
-│ │ ├── pinyinime.h
-│ │ ├── searchutility.cpp
-│ │ ├── searchutility.h
-│ │ ├── spellingtable.cpp
-│ │ ├── spellingtable.h
-│ │ ├── spellingtrie.cpp
-│ │ ├── spellingtrie.h
-│ │ ├── splparser.cpp
-│ │ ├── splparser.h
-│ │ ├── sync.cpp
-│ │ ├── sync.h
-│ │ ├── userdict.cpp
-│ │ ├── userdict.h
-│ │ ├── utf16char.cpp
-│ │ ├── utf16char.h
-│ │ ├── utf16reader.cpp
-│ │ └── utf16reader.h
-│ ├── googlepinyin.cpp
-│ ├── googlepinyin.h
-│ ├── image
-│ │ ├── delete_white.png
-│ │ └── upper_white.png
-│ └── ui_easyInput.h
-├── led.ko
-├── ledqt.cpp
-├── ledqt.h
-├── main.cpp
-├── mainpage.cpp
-├── mainpage.h
-├── mainpage.ui
-├── mainwindow.cpp
-├── mainwindow.h
-├── mainwindow.ui
-├── Makefile
-├── m.png
-├── p1.png
-├── p2.png
-├── p3.png
-├── p4.png
-├── p5.png
-├── p6.png
-├── p7.png
-├── p8.png
-├── p9.png
-├── page1.cpp
-├── page1.h
-├── page1.ui
-├── Project
-├── Project.pro
-├── Project.pro.user
-├── top.png
-└── tupian.qrc
-
-
-
----
 
 ## 三、主要功能
 
@@ -118,6 +24,7 @@
 - 硬件控制：通过 `led.ko` 驱动控制开发板 LED；Qt 端可发送控制命令。
 - 输入法：内置 EasyInput（基于 GooglePinyin 的字典与算法）便于触摸屏中文输入。
 - 资源管理：所有图片和 UI 资源由 `tupian.qrc` 管理。
+- 科大讯飞的离线语音指令识别
 
 ---
 
@@ -125,7 +32,7 @@
 
 **环境要求（开发机）**
 - Qt 5.x 或 Qt 6.x（建议使用 Qt Creator）
-- Linux / Windows 均可编译 Qt 程序（嵌入式需交叉编译）
+- Linux 编译 Qt 程序（嵌入式需交叉编译）
 
 **在开发机（主机）编译运行**
 1. 使用 Qt Creator 打开 `Project.pro`。
