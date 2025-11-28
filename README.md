@@ -2,8 +2,6 @@
 
 本项目基于 **GEC6818 开发板（ARM）**、**Linux** 与 **Qt**，实现了一个嵌入式的智能点餐终端与上位机（Qt HMI）的完整原型。系统包含触摸屏点餐界面、订单管理、上位机管理、LED 控制以及内置的 Pinyin 输入法（EasyInput）,以及科大讯飞的语音识别。  
 
-此 README 为中文完整版，含完整目录结构、构建与运行说明、通信协议示例和常见问题解答，便于直接放到 GitHub 仓库首页。
-
 ---
 
 ## 一、项目简介
@@ -12,6 +10,7 @@
 - Qt 端（上位机 / HMI）负责：接收并显示订单、管理订单队列、确认完成操作、提供更友好的界面与输入法。
 - 通信方式：TCP Socket（JSON 或自定义文本协议）。
 - 支持：触摸屏优化（800×480），内置中文输入（EasyInput），可扩展语音识别模块（如需）。
+- Linux终端运行科大讯飞的识别代码
 
 ---
 
@@ -25,23 +24,6 @@
 - 输入法：内置 EasyInput（基于 GooglePinyin 的字典与算法）便于触摸屏中文输入。
 - 资源管理：所有图片和 UI 资源由 `tupian.qrc` 管理。
 - 科大讯飞的离线语音指令识别
-
----
-
-## 四、构建与运行（Qt 端）
-
-**环境要求（开发机）**
-- Qt 5.x 或 Qt 6.x（建议使用 Qt Creator）
-- Linux 编译 Qt 程序（嵌入式需交叉编译）
-
-**在开发机（主机）编译运行**
-1. 使用 Qt Creator 打开 `Project.pro`。
-2. 配置合适的 Kit（Desktop）并执行 `Build` → `Run`。
-3. 可直接运行生成的可执行文件（例如 `./Project` 或 Qt Creator 运行按钮）。
-
-**注意**
-- `Project.pro.user` 为 Qt Creator 的本地配置文件，不用提交到远端仓库。
-- 如果使用 Windows 开发但最终运行在嵌入式上，请使用交叉编译（见下）。
 
 ---
 
@@ -136,29 +118,47 @@ insmod  led_drv.ko  --后面把这个安装的命令写入到/etc/profile脚本�
 3、安装完成之后，使用lsmod去查看是否安装成功 或者 去根目录下/dev 里面去查看
 
 [root@GEC6818 ~]#insmod  led_drv.ko
-
 [root@GEC6818 ~]#lsmod
-
 led_drv 2871 0 - Live 0xbf684000 (O)
-
 cc2530_drv 5650 0 - Live 0xbf227000 (O)
-
 rtl8723bu_wifi 1810467 0 - Live 0xbf021000 (O)
-
 gec6818_humidity 3339 0 - Live 0xbf01d000 (O)
-
 stepmotor 4252 0 - Live 0xbf018000 (O)
-
 relay 1244 0 - Live 0xbf014000 (O)
-
 led 1593 0 - Live 0xbf010000 (O)
-
 gec6818_beep 1551 0 - Live 0xbf00c000 (O)
-
 gas_drv 2257 0 - Live 0xbf008000 (O)
-
 dc_motor 1802 0 - Live 0xbf004000 (O)
-
 buttons_drv 3028 0 - Live 0xbf000000 (O)
 
 ## 七、科大讯飞使用方法
+
+首先打开科大讯飞官网，获取自己的SDK，将我的SDK移植，不要用我的SDK，不知道什么时候会失效。
+
+进入ubuntu
+
+gec@ubuntu:/mnt/hgfs/GZ2523/qt/Project/111-科大讯飞/Linux_aitalk_exp1227_50e0c9
+f8/samples/asr_offline_sample$ 
+--------------------------------------------
+f8/samples/asr_offline_sample$ ls
+32bit_make.sh  asr_offline_sample.c        asr_offline_sample.o  msc
+64bit_make.sh  asr_offline_sample.c新下载  Makefile
+--------------------------------------------
+因为我的Ubuntu是64位的，使用./64bit_make.sh
+
+会报很多警告，是正常现象，只要没有错误就行。
+
+然后链接动态库，每次都需要链接(非常关键，负责执行不了)
+在这个路径下:
+gec@ubuntu:/mnt/hgfs/GZ2523/qt/Project/111-科大讯飞/Linux_aitalk_exp1227_50e0c9
+f8/samples/asr_offline_sample$ 
+
+export LD_LIBRARY_PATH=$(pwd)/../../libs/x64/
+
+链接成功之后会在这个路径下创建asr_offline_sample，这个就是我们需要的可执行文件
+
+gec@ubuntu:/mnt/hgfs/GZ2523/qt/Project/111-科大讯飞/Linux_aitalk_exp1227_50e0c9
+f8/bin$ ls
+asr_offline_sample  call.bnf  call.bnf拷贝  call.bnf新下载  msc  wav
+
+
