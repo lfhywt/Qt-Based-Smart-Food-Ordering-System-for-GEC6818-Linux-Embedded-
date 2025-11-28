@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+    font-family: &quot;微软雅黑&quot;, &quot;Microsoft YaHei UI&quot;, Arial;
+    font-weight: bold;  /* 麦当劳文字基本都是粗体 */
+    font-size: 12pt;
+}
+
+QMainWindow {
+	background-image: url(:/new/prefix1/1.jpg);
+}
+
+QPushButton#btn_imag {
+
+    border-radius: 60px;          /* 越大越圆，50px基本是个正圆大按钮 */
+	border-image: url(:/new/prefix1/2.jpg);
+
+}
+
+
+QPushButton#btn_login {
+    /* 经典麦当劳红底白字登录按钮 */
+    background-color: #DA001A;
+    color: white;
+    border-radius: 30px;
+    padding: 12px 40px;
+    font-size: 16pt;
+    font-weight: bold;
+    border: none;
+}
+
+QPushButton#btn_login:hover {
+    background-color: #FF1A2C;
+}
+
+QPushButton#btn_login:pressed {
+    background-color: #B40015;
+}
+
+QPushButton#btn_reg {
+    /* 注册按钮用亮黄色底红字，次要按钮 */
+    background-color: #FFC222;
+    color: #DA001A;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 14pt;
+}
+
+QPushButton#btn_reg:hover {
+    background-color: #FFD700;
+}
+
+QCheckBox {
+    color: white;                  /* 记住密码等文字用白色，在红色背景上清晰 */
+    font-size: 12pt;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 3px solid #FFC222;
+    background: white;
+}
+
+QCheckBox::indicator:checked {
+    background: #FFC222;
+    image: url(:/icons/check-mark.png);  /* 可选：放个黄色勾 */
+}
+
+/* 额外建议：输入框也一起麦当劳化 */
+QLineEdit {
+    background-color: white;
+    border: 3px solid #FFC222;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 14pt;
+    color: #333;
+}
+
+QLineEdit:focus {
+    border: 3px solid #DA001A;
+}
+
+QLabel#label
+{
+	color: rgb(255, 255, 255);
+ font-family: &quot;微软雅黑&quot;, &quot;Microsoft YaHei UI&quot;, Arial;
+	font: 15pt &quot;3DS Fonticon&quot;;
+ font-weight: bold;
+}
+QLabel#label_2
+{
+	color: rgb(255, 255, 255);
+ font-family: &quot;微软雅黑&quot;, &quot;Microsoft YaHei UI&quot;, Arial;
+	font: 15pt &quot;3DS Fonticon&quot;;
+ font-weight: bold;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="btn_login">
+    <property name="geometry">
+     <rect>
+      <x>207</x>
+      <y>352</y>
+      <width>361</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>80</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>安全登录</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>192</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>45</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>账号:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_account">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>182</y>
+      <width>311</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="placeholderText">
+     <string>请输入账号</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_imag">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>40</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>260</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>45</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>密码:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_password">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>250</y>
+      <width>311</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>60</height>
+     </size>
+    </property>
+    <property name="placeholderText">
+     <string>请输入密码</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>310</y>
+      <width>391</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QCheckBox" name="checkBox">
+       <property name="text">
+        <string>自动登录</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBox_2">
+       <property name="text">
+        <string>记住密码</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

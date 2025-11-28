@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainPage</class>
+ <widget class="QMainWindow" name="MainPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* 主按钮（绿色） */
+QPushButton#pushButton {
+    background-color: #28A745;        /* 柔和亮绿 */
+    color: white;
+    border: none;
+    border-radius: 8px;               /* 轻微圆角 */
+    padding: 6px 12px;
+ border: 4px solid white;  
+}
+
+QPushButton#pushButton:hover {
+    background-color: #218838;        /* 深一点 */
+}
+
+QPushButton#pushButton:pressed {
+    background-color: #1E7E34;
+}
+
+QPushButton#pushButton_4
+{
+	border-image: url(:/new/prefix1/3-removebg-preview.png);
+}
+
+QPushButton#pushButton_5
+{
+	
+	border-image: url(:/new/prefix1/11.png);
+}
+
+QPushButton#pushButton_2 {
+    background-color: #007BFF;       /* 柔和蓝 */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+ border: 4px solid white;  
+}
+
+QPushButton#pushButton_2:hover {
+    background-color: #0069D9;
+}
+
+QPushButton#pushButton_2:pressed {
+    background-color: #005CBF;
+}
+
+QMainWindow#MainPage {
+    background-color: #1B5E20;
+}
+
+QLabel#label{
+	color: rgb(255, 255, 255);
+	font: 75 18pt &quot;微软雅黑&quot;;
+	font-weight: bold;
+}
+QLabel#label_2{
+	color: rgb(255, 255, 255);
+	font: 75 18pt &quot;微软雅黑&quot;;
+	font-weight: bold;
+}
+
+
+QPushButton#pushButton_3{
+	border-image: url(:/new/prefix1/m.png);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>121</x>
+      <y>60</y>
+      <width>172</width>
+      <height>312</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>642</x>
+      <y>306</y>
+      <width>125</width>
+      <height>127</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>431</x>
+      <y>60</y>
+      <width>172</width>
+      <height>312</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>132</x>
+      <y>70</y>
+      <width>150</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>458</x>
+      <y>81</y>
+      <width>127</width>
+      <height>127</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>164</x>
+      <y>240</y>
+      <width>93</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>堂  食</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>476</x>
+      <y>246</y>
+      <width>93</width>
+      <height>46</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>外  带</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="9"/>
+ <resources/>
+ <connections/>
+ <designerdata>
+  <property name="gridDeltaX">
+   <number>10</number>
+  </property>
+  <property name="gridDeltaY">
+   <number>10</number>
+  </property>
+  <property name="gridSnapX">
+   <bool>false</bool>
+  </property>
+  <property name="gridSnapY">
+   <bool>false</bool>
+  </property>
+  <property name="gridVisible">
+   <bool>true</bool>
+  </property>
+ </designerdata>
+</ui>

@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>1.jpg</file>
+        <file>2.jpg</file>
+        <file>3-removebg-preview.png</file>
+        <file>11.png</file>
+        <file>top.png</file>
+        <file>p1.png</file>
+        <file>p2.png</file>
+        <file>p3.png</file>
+        <file>p5.png</file>
+        <file>p6.png</file>
+        <file>p7.png</file>
+        <file>p8.png</file>
+        <file>p4.png</file>
+        <file>p9.png</file>
+        <file>m.png</file>
+        <file>background.jpg</file>
+    </qresource>
+</RCC>
